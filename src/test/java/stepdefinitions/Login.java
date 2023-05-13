@@ -3,14 +3,18 @@ package stepdefinitions;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
+import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import questions.frontend.PaginaTablaDeGastos;
 import tasks.frontend.IniciarSesion;
 
 import java.util.Map;
 
+import static java.lang.Boolean.TRUE;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
-import static utils.RecursoFront.URL_APPLITOOLS;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static utils.RecursoFront.*;
 
 public class Login {
 
@@ -27,8 +31,9 @@ public class Login {
     }
 
     @Entonces("el sistema deberá direccionarlo a la página de de la tabla de gastos")
-    public void el_sistema_deberá_direccionarlo_a_la_página_de_de_la_tabla_de_gastos() {
-
+    public void verificarInicoSesionUsuario() {
+        theActorInTheSpotlight().should(GivenWhenThen.seeThat(PaginaTablaDeGastos.enPantallaPrincipal(
+                TRANSACCIONES_RECIENTES.getRecursoFront()),equalTo(TRUE)));
     }
 
 

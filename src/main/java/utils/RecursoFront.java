@@ -7,7 +7,8 @@ import lombok.Getter;
 @Getter
 public enum RecursoFront {
 
-  URL_APPLITOOLS("https://demo.applitools.com/hackathonV2.html");
+  URL_APPLITOOLS("https://demo.applitools.com/hackathonV2.html"),
+  TRANSACCIONES_RECIENTES("Recent Transactions");
 
   private final String recursoFront;
 }
