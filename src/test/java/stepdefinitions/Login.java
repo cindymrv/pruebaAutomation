@@ -36,5 +36,4 @@ public class Login {
                 TRANSACCIONES_RECIENTES.getRecursoFront()),equalTo(TRUE)));
     }
 
-
 }
