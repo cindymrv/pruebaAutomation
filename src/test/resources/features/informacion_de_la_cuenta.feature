@@ -12,5 +12,15 @@ Característica: Prueba de verificación de información de cuenta
       | Contraseña | testpassword |
 
 
-  Escenario: Verifica que hay exactamente 6 transacciones en la tabla de gastos
-    Entonces el usuario debe ver 6 transacciones en la tabla de gastos
+  Escenario: Verificar los datos de las transacciones recientes
+    Entonces el usuario debe ver 6 transacciones en la sección de transacciones recientes
+    Y los valores positivos de las transacciones deben visualizarse en color verde y los valores negativos en color rojo
+
+
+  Escenario: Verificar los datos del Panorama financiero
+    Entonces el usuario debe ver en la sección de Panorama financiero el balance total y el valor del crédito disponible
+      | Balance total      | 350    |
+      | Crédito disponible | 17,800 |
+
+
+

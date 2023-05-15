@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import exceptions.PruebaError;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
@@ -14,6 +15,7 @@ import java.util.Map;
 import static java.lang.Boolean.TRUE;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static utils.EnumErrorMessage.MENSAJE_ERROR_LOGIN;
 import static utils.RecursoFront.*;
 
 public class Login {
@@ -33,7 +35,7 @@ public class Login {
     @Entonces("el sistema deberá direccionarlo a la página de de la tabla de gastos")
     public void verificarInicoSesionUsuario() {
         theActorInTheSpotlight().should(GivenWhenThen.seeThat(PaginaTablaDeGastos.enPantallaPrincipal(
-                TRANSACCIONES_RECIENTES.getRecursoFront()),equalTo(TRUE)));
+                TRANSACCIONES_RECIENTES.getRecursoFront()),equalTo(TRUE)).orComplainWith(PruebaError.class, MENSAJE_ERROR_LOGIN.getErrorMessage()));
     }
 
 }
