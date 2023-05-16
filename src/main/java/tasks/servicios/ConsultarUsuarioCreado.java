@@ -23,10 +23,9 @@ public class ConsultarUsuarioCreado implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         SerenityRest.rest().log().all().get(CallAnApi.as(actor).resolve(recurso));
-        if(SerenityRest.lastResponse().getStatusCode()==404)
-        {
+        if (SerenityRest.lastResponse().getStatusCode() == 404) {
             actor.remember(VARIABLE_SESION_NOMBRE.getVariableSesion(), "Null");
-        }else {
+        } else {
             actor.remember(VARIABLE_SESION_NOMBRE.getVariableSesion(),
                     SerenityRest.lastResponse().getBody().as(ResponseInformacionEmpleados.class).getData().getFirstName());
         }

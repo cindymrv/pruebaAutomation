@@ -13,7 +13,6 @@ import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import org.hamcrest.Matchers;
 
 
-
 import questions.backend.ComprobarStatusCode;
 import questions.backend.ValidarNombre;
 import tasks.servicios.ActualizarUsuario;
@@ -51,7 +50,7 @@ public class ConsumoServicioStepDefinition {
 
     @Cuando("elimine un usuario en la API con id {int}")
     public void elimnarUsuariosNoRegistradosAPI(Integer id) {
-        theActorInTheSpotlight().attemptsTo(EliminarUsuarioCreado.deLaApiSegunElId("/users/"+id));
+        theActorInTheSpotlight().attemptsTo(EliminarUsuarioCreado.deLaApiSegunElId("/users/" + id));
     }
 
     @Cuando("actualice un usuario en la API con características")
@@ -62,8 +61,8 @@ public class ConsumoServicioStepDefinition {
 
     @Y("al consultar el id del empleado creado anteriormente")
     public void consultarUsuarioAPI() {
-        String id= theActorInTheSpotlight().recall(VARIABLE_SESION_ID.getVariableSesion());
-        theActorInTheSpotlight().attemptsTo(ConsultarUsuarioCreado.deLaApiSegunElId("/users/"+id));
+        String id = theActorInTheSpotlight().recall(VARIABLE_SESION_ID.getVariableSesion());
+        theActorInTheSpotlight().attemptsTo(ConsultarUsuarioCreado.deLaApiSegunElId("/users/" + id));
     }
 
     @Entonces("se debe visualizar el nombre {string} del usuario insertado")

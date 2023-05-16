@@ -10,7 +10,7 @@ Característica: Pruebas de consumos de API de reqres in
 
   Escenario: Insertar un empleado en la lista de empleados en la API
     Cuando inserte un usuario en la API con características
-      | Nombre  | Test User         |
+      | Nombre  | Test User           |
       | Trabajo | Automation Engineer |
     Entonces el servicio me debe responder con un status code 201
     Y al consultar el id del empleado creado anteriormente

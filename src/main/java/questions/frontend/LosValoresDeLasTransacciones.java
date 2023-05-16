@@ -13,6 +13,7 @@ public class LosValoresDeLasTransacciones implements Question<Boolean> {
 
     private boolean esColorVerde = false;
     private boolean esColorRojo = false;
+
     public static LosValoresDeLasTransacciones tienenLosColoresCorrectos() {
         return new LosValoresDeLasTransacciones();
     }
@@ -23,7 +24,7 @@ public class LosValoresDeLasTransacciones implements Question<Boolean> {
         for (WebElement valorTransaccion : valoresTransacciones) {
             if (valorTransaccion.getText().contains("+")) {
                 validarColorVerde(valorTransaccion.findElement(By.className("text-success")));
-            }else{
+            } else {
                 validarColorRojo(valorTransaccion.findElement(By.className("text-danger")));
             }
         }
@@ -31,14 +32,14 @@ public class LosValoresDeLasTransacciones implements Question<Boolean> {
     }
 
     private void validarColorRojo(WebElement valorNegativo) {
-        if(valorNegativo.getCssValue("color").equals("rgba(230, 82, 82, 1)")){
-            esColorRojo= true;
+        if (valorNegativo.getCssValue("color").equals("rgba(230, 82, 82, 1)")) {
+            esColorRojo = true;
         }
     }
 
     private void validarColorVerde(WebElement valorPositivo) {
-        if(valorPositivo.getCssValue("color").equals("rgba(36, 179, 20, 1)")){
-            esColorVerde= true;
+        if (valorPositivo.getCssValue("color").equals("rgba(36, 179, 20, 1)")) {
+            esColorVerde = true;
         }
     }
 }

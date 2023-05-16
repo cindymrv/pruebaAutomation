@@ -21,12 +21,13 @@ public class InformacionDeCuenta {
 
     @Y("el usuario ingresa a la opción de Mostrar cuadro de gastos")
     public void mostrarCuadroDeGastos() {
-       theActorInTheSpotlight().attemptsTo(Ingresar.mostrarCuadroDeGastos());
+        theActorInTheSpotlight().attemptsTo(Ingresar.mostrarCuadroDeGastos());
     }
+
     @Entonces("el usuario debe ver {int} transacciones en la sección de transacciones recientes")
     public void verificarCantidadDeTransacciones(Integer cantidadDeTransacciones) {
         theActorInTheSpotlight().should(GivenWhenThen.seeThat(LaCantidadDeTransacciones.enLaTablaDeGastos(cantidadDeTransacciones
-        ), equalTo(TRUE)).orComplainWith(PruebaError.class,MENSAJE_ERROR_TRANSACCIONES_RECIENTES.getErrorMessage() ));
+        ), equalTo(TRUE)).orComplainWith(PruebaError.class, MENSAJE_ERROR_TRANSACCIONES_RECIENTES.getErrorMessage()));
     }
 
     @Entonces("los valores positivos de las transacciones deben visualizarse en color verde y los valores negativos en color rojo")
@@ -43,6 +44,6 @@ public class InformacionDeCuenta {
     @Entonces("el usuario debe ver el cuadro de gastos de los años 2017 y 2018")
     public void verificarCuadroDeGastos() {
         theActorInTheSpotlight().should(GivenWhenThen.seeThat(LosValores.enElCuadroDeGastos(),
-                equalTo(TRUE)).orComplainWith(PruebaError.class,MENSAJE_ERROR_CUADRO_GASTOS.getErrorMessage() ));
+                equalTo(TRUE)).orComplainWith(PruebaError.class, MENSAJE_ERROR_CUADRO_GASTOS.getErrorMessage()));
     }
 }

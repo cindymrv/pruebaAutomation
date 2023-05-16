@@ -10,7 +10,7 @@ public class PaginaTablaDeGastos implements Question<Boolean> {
     private final String tablaDeTransacciones;
 
     public PaginaTablaDeGastos(String tablaDeTransacciones) {
-        this.tablaDeTransacciones=tablaDeTransacciones;
+        this.tablaDeTransacciones = tablaDeTransacciones;
     }
 
     public static PaginaTablaDeGastos enPantallaPrincipal(String tablaDeTransacciones) {

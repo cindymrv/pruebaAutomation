@@ -31,8 +31,5 @@ public class InsertarUsuario implements Task {
 
         actor.should(seeThatResponse(response -> response.log().all()));
 
-
-
-
     }
 }

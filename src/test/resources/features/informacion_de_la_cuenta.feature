@@ -22,9 +22,9 @@ Característica: Prueba de verificación de información de cuenta
       | Balance total      | 350    |
       | Crédito disponible | 17,800 |
 
-    Escenario: Mostrar cuadro de gastos
-      Y el usuario ingresa a la opción de Mostrar cuadro de gastos
-      Entonces el usuario debe ver el cuadro de gastos de los años 2017 y 2018
+  Escenario: Mostrar cuadro de gastos
+    Y el usuario ingresa a la opción de Mostrar cuadro de gastos
+    Entonces el usuario debe ver el cuadro de gastos de los años 2017 y 2018
 
 
 

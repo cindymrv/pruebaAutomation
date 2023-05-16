@@ -35,7 +35,7 @@ public class Login {
     @Entonces("el sistema deberá direccionarlo a la página de de la tabla de gastos")
     public void verificarInicoSesionUsuario() {
         theActorInTheSpotlight().should(GivenWhenThen.seeThat(PaginaTablaDeGastos.enPantallaPrincipal(
-                TRANSACCIONES_RECIENTES.getRecursoFront()),equalTo(TRUE)).orComplainWith(PruebaError.class, MENSAJE_ERROR_LOGIN.getErrorMessage()));
+                TRANSACCIONES_RECIENTES.getRecursoFront()), equalTo(TRUE)).orComplainWith(PruebaError.class, MENSAJE_ERROR_LOGIN.getErrorMessage()));
     }
 
 }

@@ -1,6 +1,5 @@
 package tasks.servicios;
 
-import models.response.ResponseActualizarUsuario;
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
