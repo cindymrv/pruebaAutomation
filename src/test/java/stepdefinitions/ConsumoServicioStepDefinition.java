@@ -16,7 +16,9 @@ import org.hamcrest.Matchers;
 
 import questions.backend.ComprobarStatusCode;
 import questions.backend.ValidarNombre;
+import tasks.servicios.ActualizarUsuario;
 import tasks.servicios.ConsultarUsuarioCreado;
+import tasks.servicios.EliminarUsuarioCreado;
 import tasks.servicios.InsertarUsuario;
 
 import java.util.Map;
@@ -40,6 +42,22 @@ public class ConsumoServicioStepDefinition {
                 .attemptsTo(InsertarUsuario.conCaracteristicas(mapCaracteristicasUsuario));
         theActorInTheSpotlight().remember(VARIABLE_SESION_ID.getVariableSesion(),
                 SerenityRest.lastResponse().getBody().as(ResponseInsertarUsuario.class).getId());
+    }
+
+    @Cuando("consulte un usuario no registrado en la API")
+    public void consultarUsuariosNoRegistradosAPI() {
+        theActorInTheSpotlight().attemptsTo(ConsultarUsuarioCreado.deLaApiSegunElId("/users/4521lo"));
+    }
+
+    @Cuando("elimine un usuario en la API con id {int}")
+    public void elimnarUsuariosNoRegistradosAPI(Integer id) {
+        theActorInTheSpotlight().attemptsTo(EliminarUsuarioCreado.deLaApiSegunElId("/users/"+id));
+    }
+
+    @Cuando("actualice un usuario en la API con características")
+    public void actualizarUsuarioAPI(Map<String, String> mapCaracteristicasUsuario) {
+        theActorInTheSpotlight()
+                .attemptsTo(ActualizarUsuario.conCaracteristicas(mapCaracteristicasUsuario));
     }
 
     @Y("al consultar el id del empleado creado anteriormente")

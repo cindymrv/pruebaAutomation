@@ -17,6 +17,22 @@ Característica: Pruebas de consumos de API de reqres in
     Entonces se debe visualizar el nombre 'Test User' del usuario insertado
 
 
+  Escenario: Obtener respuesta de un usuario no registrado en la API
+    Cuando consulte un usuario no registrado en la API
+    Entonces el servicio me debe responder con un status code 404
+
+
+  Escenario: Actualizar lista de empleados en la API
+    Cuando actualice un usuario en la API con características
+      | Nombre  | Oscar         |
+      | Trabajo | Líder Técnico |
+    Entonces el servicio me debe responder con un status code 200
+
+  Escenario: Eliminar usuario
+    Cuando elimine un usuario en la API con id 4
+    Entonces el servicio me debe responder con un status code 204
+
+
 
 
 
