@@ -1,7 +1,7 @@
 # Prueba Automation
 Prueba técnica para el rol de Posición QA Semi Senior.
 
-La rama donde estan desarrollados todos los puntos de la preuba es: Master.
+La rama donde estan desarrollados todos los puntos de la prueba es: Master.
 
 Las pruebas corren con el driver de Google que se encuentra dentro del proyecto, la versión de driver es la ChromeDriver 93.0.4577.63
 
