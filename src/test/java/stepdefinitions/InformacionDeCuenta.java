@@ -2,10 +2,13 @@ package stepdefinitions;
 
 import exceptions.PruebaError;
 import io.cucumber.java.es.Entonces;
+import io.cucumber.java.es.Y;
 import net.serenitybdd.screenplay.GivenWhenThen;
 import questions.frontend.EnLaPaginaDeBalance;
 import questions.frontend.LaCantidadDeTransacciones;
+import questions.frontend.LosValores;
 import questions.frontend.LosValoresDeLasTransacciones;
+import tasks.frontend.Ingresar;
 
 import java.util.Map;
 
@@ -15,6 +18,11 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static utils.EnumErrorMessage.*;
 
 public class InformacionDeCuenta {
+
+    @Y("el usuario ingresa a la opción de Mostrar cuadro de gastos")
+    public void mostrarCuadroDeGastos() {
+       theActorInTheSpotlight().attemptsTo(Ingresar.mostrarCuadroDeGastos());
+    }
     @Entonces("el usuario debe ver {int} transacciones en la sección de transacciones recientes")
     public void verificarCantidadDeTransacciones(Integer cantidadDeTransacciones) {
         theActorInTheSpotlight().should(GivenWhenThen.seeThat(LaCantidadDeTransacciones.enLaTablaDeGastos(cantidadDeTransacciones
@@ -30,5 +38,11 @@ public class InformacionDeCuenta {
     public void verificarBalanceTotal(Map<String, String> mapInformacionPanoramaFinanciero) {
         theActorInTheSpotlight().should(GivenWhenThen.seeThat(EnLaPaginaDeBalance.laInformacionDelPanoramaFinanciero(mapInformacionPanoramaFinanciero
         ), equalTo(TRUE)).orComplainWith(PruebaError.class, MENSAJE_ERROR_PANORAMA_FINANCIERO.getErrorMessage()));
+    }
+
+    @Entonces("el usuario debe ver el cuadro de gastos de los años 2017 y 2018")
+    public void verificarCuadroDeGastos() {
+        theActorInTheSpotlight().should(GivenWhenThen.seeThat(LosValores.enElCuadroDeGastos(),
+                equalTo(TRUE)).orComplainWith(PruebaError.class,MENSAJE_ERROR_CUADRO_GASTOS.getErrorMessage() ));
     }
 }

@@ -48,8 +48,8 @@ gradle clean assemble
 
 # Los runners son:
 ```
-Para el punto de servicios: 
-Para el punto de automatización de Front: 
+Para el punto de servicios: APIReqresRunner
+Para el punto de automatización de Front: InformacionDeCuentaRunner - LoginRunner
 ```
 
 ## Reporte
