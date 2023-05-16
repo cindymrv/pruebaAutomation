@@ -15,13 +15,14 @@ import org.hamcrest.Matchers;
 
 
 import questions.backend.ComprobarStatusCode;
-import tasks.servicios.ConsultarEmpleados;
+import questions.backend.ValidarNombre;
+import tasks.servicios.ConsultarUsuarioCreado;
 import tasks.servicios.InsertarUsuario;
 
 import java.util.Map;
 
 import static net.serenitybdd.screenplay.actors.OnStage.*;
-import static utils.EnumErrorMessage.MENSAJE_ERROR_PANORAMA_FINANCIERO;
+import static utils.EnumErrorMessage.MENSAJE_ERROR_NOMBRE_USUARIO;
 import static utils.EnumErrorMessage.MENSAJE_ERROR_STATUS_CODE;
 import static utils.EnumVariablesSesion.VARIABLE_SESION_ID;
 
@@ -37,13 +38,20 @@ public class ConsumoServicioStepDefinition {
     public void insertarUsuarioAPI(Map<String, String> mapCaracteristicasUsuario) {
         theActorInTheSpotlight()
                 .attemptsTo(InsertarUsuario.conCaracteristicas(mapCaracteristicasUsuario));
-        theActorInTheSpotlight().remember(VARIABLE_SESION_ID.getVariableSesion(), SerenityRest.lastResponse().getBody().as(ResponseInsertarUsuario.class).getId());
+        theActorInTheSpotlight().remember(VARIABLE_SESION_ID.getVariableSesion(),
+                SerenityRest.lastResponse().getBody().as(ResponseInsertarUsuario.class).getId());
     }
 
-    @Y("al consultar el id del empleado creado en el servicio")
-    public void consultarUsuarioCreadoAPI() {
+    @Y("al consultar el id del empleado creado anteriormente")
+    public void consultarUsuarioAPI() {
         String id= theActorInTheSpotlight().recall(VARIABLE_SESION_ID.getVariableSesion());
-        theActorInTheSpotlight().attemptsTo(ConsultarEmpleados.deLaApiSegunRecurso("/users/"+id));
+        theActorInTheSpotlight().attemptsTo(ConsultarUsuarioCreado.deLaApiSegunElId("/users/"+id));
+    }
+
+    @Entonces("se debe visualizar el nombre {string} del usuario insertado")
+    public void validarUsuarioCreadoAPI(String nombre) {
+        theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidarNombre.delUsuarioCreado(nombre),
+                Matchers.equalTo(Boolean.TRUE)).orComplainWith(PruebaError.class, MENSAJE_ERROR_NOMBRE_USUARIO.getErrorMessage()));
     }
 
     @Entonces("el servicio me debe responder con un status code {int}")
